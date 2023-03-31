@@ -1,36 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
-import './ExpenseForm.css';
+import "./ExpenseForm.css";
 
-const ExpenseForm =()=>{
+const ExpenseForm = () => {
+  const [enteredTitle, setenteredTitle] = useState("");
+  const [enteredAmount, setenteredAmount] = useState("");
+  const [enteredDate, setenteredDate] = useState("");
+  
 
+  const titleChangeHandler = (event) => {
+    setenteredTitle(event.target.value);
+  };
 
-    const titleChangeHandler=(event)=>{
-        console.log(event.target.value);
-    };
+ 
+  const amountchangehandler = (event) => {
+    setenteredAmount(event.target.value);
+  };
+  
+  const datechangehandler = (event) => {
+    setenteredDate(event.target.value);
+  };
 
-return ( 
+  return (
     <form>
-    <div className="new-expense__controls">
-    <div className="new-expense__control">
-        <label>Title</label>
-        <input type='text' onChange={titleChangeHandler}/>
-    </div>
-    <div className="new-expense__control">
-        <label>Amount</label>
-        <input type='number' min='0.01' step='0.01'/>
+      <div className="new-expense__controls">
+        <div className="new-expense__control">
+          <label>Title</label>
+          <input type="text" onChange={titleChangeHandler} />
         </div>
-    
-    <div className="new-expense__control">
-        <label>Date</label>
-        <input type='date' min='2019-01-01'  max='2023-12-31'/>
+        <div className="new-expense__control">
+          <label>Amount</label>
+          <input type="number" min="0.01" step="0.01" onChange={amountchangehandler}/>
         </div>
+
+        <div className="new-expense__control">
+          <label>Date</label>
+          <input type="date" min="2019-01-01" max="2023-12-31" onChange={datechangehandler}/>
         </div>
-    <div className="new-expense__actions">
+      </div>
+      <div className="new-expense__actions">
         <button type="Submit">Add Expense</button>
-    </div>
-</form>
-);
+      </div>
+    </form>
+  );
 };
 
 export default ExpenseForm;
