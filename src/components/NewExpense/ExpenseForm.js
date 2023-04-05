@@ -40,7 +40,7 @@ const ExpenseForm = (props) => {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault();    // after input it wont disapper
 
     const expenseData = {
       title: enteredTitle,
@@ -49,7 +49,7 @@ const ExpenseForm = (props) => {
     };
 
     props.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
+    setEnteredTitle('');     // to make the form input empty
     setEnteredAmount('');
     setEnteredDate('');
   };
